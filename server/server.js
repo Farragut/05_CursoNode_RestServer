@@ -1,15 +1,14 @@
-require('./config/config')
-const express = require('express')
-const bodyParser = require('body-parser')
+require('./config/config');
+const express = require('express');
+const bodyParser = require('body-parser');
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
-const app = express()
-const PORT = 3000
+const app = express();
 
 app.get('/usuario', function(req, res) {
     res.send('Get usuario')
@@ -44,5 +43,5 @@ app.delete('/usuario', function(req, res) {
 
 
 app.listen(process.env.PORT, () => {
-    console.log(`Escuchando el puerto ${PORT}`);
+    console.log(`Escuchando el puerto ${process.env.PORT}`);
 })
