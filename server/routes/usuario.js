@@ -1,12 +1,14 @@
 const express = require('express');
-const Usuario = require('../models/usuario');
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
+const Usuario = require('../models/usuario');
+const { verificarToken, verificarAdmin } = require('../middlewares/autenticacion');
+
 const app = express();
 
-app.get('/usuario', function(req, res) {
-
+app.get('/usuario', verificarToken, (req, res) => {
+    //app.get('/usuario', (req, res) => {
     let filtroEstado = {
         estado: true
     }
@@ -38,7 +40,7 @@ app.get('/usuario', function(req, res) {
         })
 });
 
-app.post('/usuario', function(req, res) {
+app.post('/usuario', [verificarToken, verificarAdmin], (req, res) => {
 
     let body = req.body;
 
@@ -67,7 +69,7 @@ app.post('/usuario', function(req, res) {
     });
 })
 
-app.put('/usuario/:id', function(req, res) {
+app.put('/usuario/:id', [verificarToken, verificarAdmin], (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
 
@@ -86,7 +88,7 @@ app.put('/usuario/:id', function(req, res) {
     })
 })
 
-app.delete('/usuario/:id', function(req, res) {
+app.delete('/usuario/:id', [verificarToken, verificarAdmin], (req, res) => {
     let id = req.params.id;
 
     //########################################

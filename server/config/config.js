@@ -12,6 +12,21 @@ const CONEX_MONGODB_MLAB = `mongodb://${USER_MONGODB}:${PASWD_MONGODB}@ds137812.
 //#######################
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
+
+//#########################
+//###     EXP TOKEN     ###
+//#########################
+process.env.CADUCIDAD_TOKEN = '30d';
+
+
+//##################################
+//###     SEED AUTENTICACION     ###
+//##################################
+process.env.SEED = process.env.SEED || 'secret_DESARROLLO';
+//secret_PRODUCCION
+
+
+
 //#######################
 //###  BASE DE DATOS  ###
 //#######################

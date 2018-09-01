@@ -1,4 +1,7 @@
+//configuracion globa
 require('./config/config');
+
+//importaciones
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -7,7 +10,9 @@ var colors = require('colors');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(require('./routes/usuario'));
+
+//configuracion global de rutas
+app.use(require('./routes/index'));
 
 mongoose.connect(process.env.URLDB, (err, res) => {
     if (err) throw err;
