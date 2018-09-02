@@ -37,4 +37,11 @@ if (process.env.NODE_ENV === 'dev') {
     urlDB = CONEX_MONGODB_MLAB;
 }
 
+
+//#######################
+//#  GOOGLE CLIENT ID   #
+//#######################
+process.env.CLIENT_ID = process.env.CLIENT_ID || '96908041256-qoeskqtc0m5g0lkmcgj4es2n9jd4lklo.apps.googleusercontent.com';
+
+
 process.env.URLDB = urlDB;
